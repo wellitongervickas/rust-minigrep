@@ -5,9 +5,9 @@ use minigrep::Config;
 
 fn main() {
     // @dev get cmd line args
-    let args: Vec<String> = env::args().collect();
+    let args: env::Args = env::args();
     
-    let config: Config = Config::build(&args).unwrap_or_else(|err: &str| {
+    let config: Config = Config::build(args).unwrap_or_else(|err: &str| {
         eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     });
